@@ -9,53 +9,53 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('address', {
+        .state('checking', {
             parent: 'entity',
-            url: '/address',
+            url: '/checking',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'newApp.address.home.title'
+                pageTitle: 'newApp.checking.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/address/addresses.html',
-                    controller: 'AddressController',
+                    templateUrl: 'app/entities/checking/checkings.html',
+                    controller: 'CheckingController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('address');
+                    $translatePartialLoader.addPart('checking');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
             }
         })
-        .state('address-detail', {
-            parent: 'address',
-            url: '/address/{id}',
+        .state('checking-detail', {
+            parent: 'checking',
+            url: '/checking/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'newApp.address.detail.title'
+                pageTitle: 'newApp.checking.detail.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/address/address-detail.html',
-                    controller: 'AddressDetailController',
+                    templateUrl: 'app/entities/checking/checking-detail.html',
+                    controller: 'CheckingDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('address');
+                    $translatePartialLoader.addPart('checking');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'Address', function($stateParams, Address) {
-                    return Address.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Checking', function($stateParams, Checking) {
+                    return Checking.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'address',
+                        name: $state.current.name || 'checking',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -63,22 +63,22 @@
                 }]
             }
         })
-        .state('address-detail.edit', {
-            parent: 'address-detail',
+        .state('checking-detail.edit', {
+            parent: 'checking-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-dialog.html',
-                    controller: 'AddressDialogController',
+                    templateUrl: 'app/entities/checking/checking-dialog.html',
+                    controller: 'CheckingDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Address', function(Address) {
-                            return Address.get({id : $stateParams.id}).$promise;
+                        entity: ['Checking', function(Checking) {
+                            return Checking.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -88,82 +88,78 @@
                 });
             }]
         })
-        .state('address.new', {
-            parent: 'address',
+        .state('checking.new', {
+            parent: 'checking',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-dialog.html',
-                    controller: 'AddressDialogController',
+                    templateUrl: 'app/entities/checking/checking-dialog.html',
+                    controller: 'CheckingDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                street: null,
-                                city: null,
-                                state: null,
-                                pincode: null,
-                                door: null,
+                                name: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('address', null, { reload: 'address' });
+                    $state.go('checking', null, { reload: 'checking' });
                 }, function() {
-                    $state.go('address');
+                    $state.go('checking');
                 });
             }]
         })
-        .state('address.edit', {
-            parent: 'address',
+        .state('checking.edit', {
+            parent: 'checking',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-dialog.html',
-                    controller: 'AddressDialogController',
+                    templateUrl: 'app/entities/checking/checking-dialog.html',
+                    controller: 'CheckingDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Address', function(Address) {
-                            return Address.get({id : $stateParams.id}).$promise;
+                        entity: ['Checking', function(Checking) {
+                            return Checking.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('address', null, { reload: 'address' });
+                    $state.go('checking', null, { reload: 'checking' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('address.delete', {
-            parent: 'address',
+        .state('checking.delete', {
+            parent: 'checking',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-delete-dialog.html',
-                    controller: 'AddressDeleteController',
+                    templateUrl: 'app/entities/checking/checking-delete-dialog.html',
+                    controller: 'CheckingDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Address', function(Address) {
-                            return Address.get({id : $stateParams.id}).$promise;
+                        entity: ['Checking', function(Checking) {
+                            return Checking.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('address', null, { reload: 'address' });
+                    $state.go('checking', null, { reload: 'checking' });
                 }, function() {
                     $state.go('^');
                 });

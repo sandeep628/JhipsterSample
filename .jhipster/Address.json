@@ -25,6 +25,10 @@
         {
             "fieldName": "pincode",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "door",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20171228074209",

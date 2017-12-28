@@ -19,6 +19,7 @@
             "city": "City",
             "state": "State",
             "pincode": "Pincode",
+            "door": "Door",
             "employee": "Employee"
         }
     }

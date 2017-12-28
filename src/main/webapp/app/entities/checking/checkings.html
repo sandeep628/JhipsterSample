@@ -1,13 +1,13 @@
 <div>
-    <h2 data-translate="newApp.address.home.title">Addresses</h2>
+    <h2 data-translate="newApp.checking.home.title">Checkings</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="address.new" >
+                <button class="btn btn-primary" ui-sref="checking.new" >
                     <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="newApp.address.home.createLabel">
-                        Create new Address
+                    <span  data-translate="newApp.checking.home.createLabel">
+                        Create new Checking
                     </span>
                 </button>
             </div>
@@ -19,38 +19,30 @@
             <thead>
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
-                    <th><span data-translate="newApp.address.street">Street</span></th>
-                    <th><span data-translate="newApp.address.city">City</span></th>
-                    <th><span data-translate="newApp.address.state">State</span></th>
-                    <th><span data-translate="newApp.address.pincode">Pincode</span></th>
-                    <th><span data-translate="newApp.address.door">Door</span></th>
+                    <th><span data-translate="newApp.checking.name">Name</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="address in vm.addresses track by address.id">
-                    <td><a ui-sref="address-detail({id:address.id})">{{address.id}}</a></td>
-                    <td>{{address.street}}</td>
-                    <td>{{address.city}}</td>
-                    <td>{{address.state}}</td>
-                    <td>{{address.pincode}}</td>
-                    <td>{{address.door}}</td>
+                <tr ng-repeat="checking in vm.checkings track by checking.id">
+                    <td><a ui-sref="checking-detail({id:checking.id})">{{checking.id}}</a></td>
+                    <td>{{checking.name}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="address-detail({id:address.id})"
+                                    ui-sref="checking-detail({id:checking.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.view"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="address.edit({id:address.id})"
+                                    ui-sref="checking.edit({id:checking.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="address.delete({id:address.id})"
+                                    ui-sref="checking.delete({id:checking.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.delete"></span>

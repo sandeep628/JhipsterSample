@@ -50,6 +50,9 @@ public class AddressResourceIntTest {
     private static final Integer DEFAULT_PINCODE = 1;
     private static final Integer UPDATED_PINCODE = 2;
 
+    private static final String DEFAULT_DOOR = "AAAAAAAAAA";
+    private static final String UPDATED_DOOR = "BBBBBBBBBB";
+
     @Autowired
     private AddressRepository addressRepository;
 
@@ -91,7 +94,8 @@ public class AddressResourceIntTest {
             .street(DEFAULT_STREET)
             .city(DEFAULT_CITY)
             .state(DEFAULT_STATE)
-            .pincode(DEFAULT_PINCODE);
+            .pincode(DEFAULT_PINCODE)
+            .door(DEFAULT_DOOR);
         return address;
     }
 
@@ -119,6 +123,7 @@ public class AddressResourceIntTest {
         assertThat(testAddress.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testAddress.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testAddress.getPincode()).isEqualTo(DEFAULT_PINCODE);
+        assertThat(testAddress.getDoor()).isEqualTo(DEFAULT_DOOR);
     }
 
     @Test
@@ -154,7 +159,8 @@ public class AddressResourceIntTest {
             .andExpect(jsonPath("$.[*].street").value(hasItem(DEFAULT_STREET.toString())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
-            .andExpect(jsonPath("$.[*].pincode").value(hasItem(DEFAULT_PINCODE)));
+            .andExpect(jsonPath("$.[*].pincode").value(hasItem(DEFAULT_PINCODE)))
+            .andExpect(jsonPath("$.[*].door").value(hasItem(DEFAULT_DOOR.toString())));
     }
 
     @Test
@@ -171,7 +177,8 @@ public class AddressResourceIntTest {
             .andExpect(jsonPath("$.street").value(DEFAULT_STREET.toString()))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
-            .andExpect(jsonPath("$.pincode").value(DEFAULT_PINCODE));
+            .andExpect(jsonPath("$.pincode").value(DEFAULT_PINCODE))
+            .andExpect(jsonPath("$.door").value(DEFAULT_DOOR.toString()));
     }
 
     @Test
@@ -197,7 +204,8 @@ public class AddressResourceIntTest {
             .street(UPDATED_STREET)
             .city(UPDATED_CITY)
             .state(UPDATED_STATE)
-            .pincode(UPDATED_PINCODE);
+            .pincode(UPDATED_PINCODE)
+            .door(UPDATED_DOOR);
 
         restAddressMockMvc.perform(put("/api/addresses")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -212,6 +220,7 @@ public class AddressResourceIntTest {
         assertThat(testAddress.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testAddress.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testAddress.getPincode()).isEqualTo(UPDATED_PINCODE);
+        assertThat(testAddress.getDoor()).isEqualTo(UPDATED_DOOR);
     }
 
     @Test

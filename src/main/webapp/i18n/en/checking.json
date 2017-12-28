@@ -1,0 +1,21 @@
+{
+    "newApp": {
+        "checking" : {
+            "home": {
+                "title": "Checkings",
+                "createLabel": "Create a new Checking",
+                "createOrEditLabel": "Create or edit a Checking"
+            },
+            "created": "A new Checking is created with identifier {{ param }}",
+            "updated": "A Checking is updated with identifier {{ param }}",
+            "deleted": "A Checking is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Checking {{ id }}?"
+            },
+            "detail": {
+                "title": "Checking"
+            },
+            "name": "Name"
+        }
+    }
+}

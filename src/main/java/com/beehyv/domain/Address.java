@@ -35,6 +35,9 @@ public class Address implements Serializable {
     @Column(name = "pincode")
     private Integer pincode;
 
+    @Column(name = "door")
+    private String door;
+
     @OneToOne(mappedBy = "address")
     @JsonIgnore
     private Employee employee;
@@ -100,6 +103,19 @@ public class Address implements Serializable {
         this.pincode = pincode;
     }
 
+    public String getDoor() {
+        return door;
+    }
+
+    public Address door(String door) {
+        this.door = door;
+        return this;
+    }
+
+    public void setDoor(String door) {
+        this.door = door;
+    }
+
     public Employee getEmployee() {
         return employee;
     }
@@ -142,6 +158,7 @@ public class Address implements Serializable {
             ", city='" + getCity() + "'" +
             ", state='" + getState() + "'" +
             ", pincode=" + getPincode() +
+            ", door='" + getDoor() + "'" +
             "}";
     }
 }

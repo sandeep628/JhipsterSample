@@ -43,6 +43,7 @@ public class CacheConfiguration {
             cm.createCache(com.beehyv.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.beehyv.domain.Employee.class.getName(), jcacheConfiguration);
             cm.createCache(com.beehyv.domain.Address.class.getName(), jcacheConfiguration);
+            cm.createCache(com.beehyv.domain.Checking.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
