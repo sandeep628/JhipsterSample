@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "address"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "street",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pincode",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171228074209",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "address",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

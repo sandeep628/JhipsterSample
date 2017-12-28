@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "employee"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "emp_id",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salary",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171228074030",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "employee",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
